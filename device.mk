@@ -7,6 +7,9 @@
 
 LOCAL_PATH := device/xiaomi/beryl
 
+# API
+PRODUCT_SHIPPING_API_LEVEL := 34
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
