@@ -5,7 +5,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/alps/mgvi_64_armv82
+LOCAL_PATH := device/xiaomi/beryl
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -19,10 +20,10 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
 
 PRODUCT_PACKAGES += \
-    bootctrl.common
+    bootctrl.mt6855
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.common \
+    bootctrl.mt6855 \
     libgptutils \
     libz \
     libcutils
