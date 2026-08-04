@@ -64,3 +64,15 @@ PRODUCT_PACKAGES += \
     vold_prepare_subdirs.recovery \
     wait_for_keymaster.recovery
 
+# Boot
+PRODUCT_PACKAGES += \
+    android.hardware.boot-V1-ndk \
+    android.hardware.boot@1.0 \
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health-V4-ndk
+
+# Fastboot
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot-V1-ndk
