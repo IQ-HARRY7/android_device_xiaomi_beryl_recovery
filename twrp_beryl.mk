@@ -18,6 +18,9 @@ $(call inherit-product, device/xiaomi/beryl/device.mk)
 # Configure emulated_storage.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# Device-specific OrangeFox configuration
+$(call inherit-product, $(DEVICE_PATH)/fox_beryl.mk)
+
 PRODUCT_DEVICE := beryl
 PRODUCT_NAME := twrp_beryl
 PRODUCT_BRAND := Redmi
