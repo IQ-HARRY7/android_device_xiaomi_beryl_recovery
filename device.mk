@@ -14,6 +14,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression_with_xor.mk)
 
+# Enable developer GSI keys
+$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
+
 # Configure generic_ramdidk.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
@@ -25,10 +28,16 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_BUILD_SUPER_PARTITION  := false
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 34
 PRODUCT_TARGET_VNDK_VERSION := 34
+BOARD_SHIPPING_API_LEVEL := 34
+SHIPPING_API_LEVEL := 34
+
+BOARD_ROOT_EXTRA_SYMLINKS += \
+    /vendor/firmware:/vendor/odm/firmware
 
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -63,7 +72,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.fastboot-V1-ndk \
     android.hardware.fastboot@1.0 \
-    android.hardware.fastboot@1.1
+    android.hardware.fastboot@1.1 \
+    fastbootd
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -101,6 +111,7 @@ PRODUCT_PACKAGES += \
 # Additional Target Libraries
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hardware.keymaster@4.1 \
+    android.hardware.keymaster-V4-ndk.so \
     android.hardware.graphics.common@1.0 \
     libion \
     libxml2 \
@@ -153,6 +164,5 @@ PRODUCT_COPY_FILES += \
 # Copy root-level RC files to vendor_ramdisk — imported by init during normal + recovery boot
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/init.recovery.mt6855.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.mt6855.rc \
-    $(LOCAL_PATH)/recovery/root/init.recovery.usb.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.usb.rc \
     $(LOCAL_PATH)/recovery/root/tee-supplicant.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/tee-supplicant.rc \
     $(LOCAL_PATH)/recovery/root/miteelog.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/miteelog.rc

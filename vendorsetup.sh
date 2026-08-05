@@ -5,7 +5,7 @@ FDEVICE="beryl"
 
 fox_get_target_device() {
     local chkdev=""
-    
+
     if [ -n "$ZSH_VERSION" ]; then
         local current_source="${(%):-%x}"
         chkdev=$(echo "$current_source" | grep -w "$FDEVICE")
@@ -32,8 +32,8 @@ fi
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
     export LC_ALL="C"
-    export ALLOW_MISSING_DEPENDENCIES=true   
-    export BUILD_USERNAME=IQ_HARRY_07
+    export ALLOW_MISSING_DEPENDENCIES=true
+    export BUILD_USERNAME=Khargosxh18
     export BUILD_HOSTNAME=github
 
     export FOX_VENDOR_BOOT_RECOVERY=1
@@ -64,19 +64,19 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_ENABLE_APP_MANAGER=1
     export FOX_DELETE_AROMAFM=1
     export FOX_DELETE_INITD_ADDON=1
-	
+
     # prevent automated reboot when flashing Orangefox.zip
     export FOX_INSTALLER_DISABLE_AUTOREBOOT=1
-	
-    # to reduce Orangefox size
-	export FOX_DRASTIC_SIZE_REDUCTION=1
-   
-	# KernelSU-Next / SukiSu support
-     export FOX_ENABLE_KERNELSU_NEXT_SUPPORT=0
-    # export FOX_ENABLE_SUKISU_SUPPORT=1
-    #Temporary disabled. 
 
-# to fix CANNOT LINK EXECUTIVES in Android 16. 
+    # to reduce Orangefox size
+    export FOX_DRASTIC_SIZE_REDUCTION=1
+
+    # KernelSU-Next / SukiSu support
+    export FOX_ENABLE_KERNELSU_NEXT_SUPPORT=0
+    # export FOX_ENABLE_SUKISU_SUPPORT=1
+    #Temporary disabled.
+
+    # to fix CANNOT LINK EXECUTIVES in Android 16.
     export FOX_ADD_API_V36_PREBUILTS=1
 
 else
