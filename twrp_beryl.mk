@@ -19,7 +19,7 @@ $(call inherit-product, device/xiaomi/beryl/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Device-specific OrangeFox configuration
-$(call inherit-product, $(DEVICE_PATH)/fox_beryl.mk)
+$(call inherit-product, device/xiaomi/beryl/fox_beryl.mk)
 
 PRODUCT_DEVICE := beryl
 PRODUCT_NAME := twrp_beryl
