@@ -260,6 +260,6 @@
         <fqname>IVSIMService/default</fqname>
     </hal>
     <sepolicy>
-        <version>202504</version>
+        <version>34.0</version>
     </sepolicy>
 </manifest>
