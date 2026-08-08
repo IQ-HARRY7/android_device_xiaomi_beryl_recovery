@@ -85,12 +85,6 @@ PRODUCT_PACKAGES += \
     android.hardware.security.secureclock \
     android.hardware.security.sharedsecret
 
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health-V4-ndk \
-    android.hardware.health@1.0 \
-    android.hardware.health@2.0
-
 PRODUCT_PACKAGES += \
     e2fsck.vendor_ramdisk \
     fsck.f2fs.vendor_ramdisk \
