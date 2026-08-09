@@ -1,25 +1,58 @@
 # Logical Partitions
 system                                                  /system                erofs   ro                                                                           wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
 system                                                  /system                ext4    ro                                                                           wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
-vendor                                                  /vendor                erofs   ro                                                                           wait,slotselect,avb=vbmeta_vendor,logical,first_stage_mount
-vendor                                                  /vendor                ext4    ro                                                                           wait,slotselect,avb=vbmeta_vendor,logical,first_stage_mount
+system_ext                                              /system_ext            erofs   ro                                                                           wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
+system_ext                                              /system_ext            ext4    ro                                                                           wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
+vendor                                                  /vendor                erofs   ro                                                                           wait,slotselect,avb,logical,first_stage_mount
+vendor                                                  /vendor                ext4    ro                                                                           wait,slotselect,avb,logical,first_stage_mount
 product                                                 /product               erofs   ro                                                                           wait,slotselect,avb,logical,first_stage_mount
 product                                                 /product               ext4    ro                                                                           wait,slotselect,avb,logical,first_stage_mount
-system_ext                                              /system_ext            erofs   ro                                                                           wait,slotselect,logical
-mi_ext                                                  /mi_ext                erofs   ro                                                                           wait,slotselect,logical
-vendor_dlkm                                             /vendor_dlkm           erofs   ro                                                                           wait,slotselect,logical
-system_dlkm                                             /system_dlkm           erofs   ro                                                                           wait,slotselect,logical
-odm                                                     /odm                   ext4    ro                                                                           wait,slotselect;display="Odm";logical
-odm                                                     /odm                   erofs   ro                                                                           wait,slotselect;display="Odm";logical
-odm_dlkm                                                /odm_dlkm              ext4    ro                                                                           wait,slotselect,logical
-odm_dlkm                                                /odm_dlkm              erofs   ro                                                                           wait,slotselect,logical
+mi_ext                                                  /mnt/vendor/mi_ext     ext4    ro                                                                           wait,slotselect,avb=vbmeta,logical,first_stage_mount,nofail
+mi_ext                                                  /mnt/vendor/mi_ext     erofs   ro                                                                           wait,slotselect,avb=vbmeta,logical,first_stage_mount,nofail
+/mnt/vendor/mi_ext                                      /mi_ext                erofs   ro,bind                                                                      wait,nofail
+vendor_dlkm                                             /vendor_dlkm           erofs   ro                                                                           wait,slotselect,avb,logical,first_stage_mount
+vendor_dlkm                                             /vendor_dlkm           ext4    ro                                                                           wait,slotselect,avb,logical,first_stage_mount
+odm_dlkm                                                /odm_dlkm              erofs   ro                                                                           wait,slotselect,avb,logical,first_stage_mount
+odm_dlkm                                                /odm_dlkm              ext4    ro                                                                           wait,slotselect,avb,logical,first_stage_mount
+system_dlkm                                             /system_dlkm           erofs   ro                                                                           wait,slotselect,avb,logical,first_stage_mount
+system_dlkm                                             /system_dlkm           ext4    ro                                                                           wait,slotselect,avb,logical,first_stage_mount
 
+# Metadata
 /dev/block/by-name/metadata                             /metadata              ext4    noatime,nosuid,nodev,discard                                                 wait,check,formattable,wrappedkey,first_stage_mount,disable_verification
-/dev/block/by-name/userdata                             /data                  f2fs    noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,checkpoint_merge,gc_merge,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
-/dev/block/by-name/userdata                             /data                  mifs    noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,checkpoint_merge,gc_merge,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
-/dev/block/by-name/boot                                 /boot                  emmc    defaults                                                                     first_stage_mount,nofail,slotselect
-/dev/block/by-name/vendor_boot                          /vendor_boot           emmc    defaults                                                                     first_stage_mount,nofail,slotselect
-/dev/block/by-name/dtbo                                 /dtbo                  emmc    defaults                                                                     first_stage_mount,nofail,slotselect
-/dev/block/by-name/vbmeta                               /vbmeta                emmc    defaults                                                                     first_stage_mount,nofail,slotselect
-/dev/block/by-name/persist                              /persist               ext4    noatime,nosuid,nodev,barrier=1                                               wait,formattable
-/dev/block/by-name/misc                                 /misc                  emmc    defaults                                                                     defaults
+
+# Userdata
+/dev/block/by-name/userdata                             /data                  f2fs    gc_merge,atgc,age_extent_cache,noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt                                                                                                      wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+/dev/block/by-name/userdata                             /data                  f2fs    gc_merge,atgc,age_extent_cache,noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt                                                                                                      wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+
+# Misc
+/dev/block/by-name/rescue                               /cache                 ext4    noatime,nosuid,nodev,noauto_da_alloc,discard  wait,check,formattable
+
+# --- Secure storage / calibration (backup-only, never wipeable or flashable) ---
+# NOTE: mount points renamed to *_bak — prepdecrypt.sh mounts the real block
+# devices at /mnt/vendor/protect_f etc. before TWRP's PartitionManager runs,
+# so reusing those paths here causes "Unable to find partition" (mount collision).
+# Same underlying block device either way, so backup content is unaffected.
+
+/dev/block/by-name/protect1               /mnt/vendor/protect_f_bak  ext4  noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc  wait,check,formattable,flags=display="Protect_F";backup=1;canbewiped=0
+/dev/block/by-name/protect2               /mnt/vendor/protect_s_bak  ext4  noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc  wait,check,formattable,flags=display="Protect_S";backup=1;canbewiped=0
+/dev/block/by-name/nvdata                 /mnt/vendor/nvdata_bak     ext4  noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc  wait,check,formattable,flags=display="NVData (IMEI/Calibration)";backup=1;canbewiped=0
+/dev/block/by-name/nvcfg                  /mnt/vendor/nvcfg_bak      ext4  noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc  wait,check,formattable,flags=display="NVCfg";backup=1;canbewiped=0
+/dev/block/by-name/persist                /mnt/vendor/persist        ext4  noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc  wait,check,formattable,flags=display="Persist";backup=1;canbewiped=0
+
+# --- Boot-chain (backup + flashable, wipeable only under advanced wipe) ---
+/dev/block/by-name/boot                                 /boot                  emmc    defaults                                                                      defaults,slotselect,flags=display="Boot";backup=1;flashimg=1;wipeingui
+/dev/block/by-name/vendor_boot                          /vendor_boot           emmc    defaults                                                                      defaults,slotselect,flags=display="Vendor boot";backup=1;flashimg=1;wipeingui
+/dev/block/by-name/dtbo                                 /dtbo                  emmc    defaults                                                                      defaults,slotselect,flags=display="DTBO";backup=1;flashimg=1;wipeingui
+/dev/block/by-name/init_boot                            /init_boot             emmc    defaults                                                                      defaults,slotselect,flags=display="Init Boot";backup=1;flashimg=1;wipeingui
+
+# --- AVB / vbmeta family (backup + flashable, no wipe — empty vbmeta can hard-brick) ---
+/dev/block/by-name/vbmeta                 /vbmeta         emmc defaults                                                              defaults,slotselect,flags=display="Vbmeta";backup=1;flashimg=1
+/dev/block/by-name/vbmeta_system          /vbmeta_system  emmc defaults                                                              defaults,slotselect,flags=display="Vbmeta System";backup=1;flashimg=1
+/dev/block/by-name/vbmeta_vendor          /vbmeta_vendor  emmc defaults                                                              defaults,slotselect,flags=display="Vbmeta Vendor";backup=1;flashimg=1
+
+# SD card
+/devices/platform/soc/11240000.mmc*       auto          auto   defaults                                                              voldmanaged=sdcard1:auto
+# Misc
+/dev/block/by-name/misc                   /misc         emmc   defaults                                                              defaults
+# USB OTG
+/devices/platform/mt_usb*                 auto          vfat   defaults                                                                voldmanaged=usbotg:auto
