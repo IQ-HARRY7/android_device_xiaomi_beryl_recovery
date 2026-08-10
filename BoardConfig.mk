@@ -227,5 +227,5 @@ TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_NO_HAPTICS := true
 
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
-TW_LOAD_VENDOR_MODULES := "fts_touch_i2c.ko lct_tp.ko xiaomi_tp.ko xiaomi_fp.ko adsp.ko nfc_i2c.ko"
+TW_LOAD_VENDOR_MODULES := "fts_touch_i2c.ko lct_tp.ko xiaomi_tp.ko xiaomi_fp.ko adsp.ko nfc_i2c.ko mitee.ko mcDrvModule.ko sec.ko ffa_v11.ko sec-rng.ko ufs-mediatek-mod.ko phy-mtk-ufs.ko cqhci.ko rpmb.ko rpmb-mtk.ko"
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
