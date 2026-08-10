@@ -48,6 +48,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_USE_DATA_RECOVERY_FOR_SETTINGS=1
     export FOX_USE_UPDATED_MAGISKBOOT=1
     export FOX_COMPRESS_EXECUTABLES=1
+    export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
+    export OF_USE_AIDL_BOOT_CONTROL=1
+    export OF_FBE_METADATA_MOUNT_IGNORE=1
 
     # Binaries & Tools
     export FOX_USE_BASH_SHELL=1
@@ -77,7 +80,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     #Temporary disabled.
 
     # to fix CANNOT LINK EXECUTIVES in Android 16.
-    export FOX_ADD_API_V36_PREBUILTS=1
+    export FOX_ADD_API_V36_PREBUILTS=2
 
 else
     if [ -z "$FOX_BUILD_DEVICE" ] && [ -z "$BASH_SOURCE" ] && [ -z "$ZSH_VERSION" ]; then
