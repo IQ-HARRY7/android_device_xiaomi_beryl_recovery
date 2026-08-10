@@ -3,6 +3,7 @@ service miteelog /vendor/bin/miteelog
     user system
     group system
     disabled
+    seclabel u:r:recovery:s0
 
 on post-fs-data
     mkdir /data/vendor/mitee

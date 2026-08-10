@@ -5,6 +5,7 @@ service tee-supplicant /vendor/bin/tee-supplicant
     group system secure_element nfc
     capabilities SYS_RAWIO
     disabled
+    seclabel u:r:recovery:s0
 
 
 on fs
