@@ -1,5 +1,5 @@
 import /tee-supplicant.rc
-import /system/etc/init/android.hardware.security.keymint.mitee@4.0-service.rc
+import /vendor/etc/init/android.hardware.security.keymint.mitee@4.0-service.rc
 import /miteelog.rc
 
 
