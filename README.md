@@ -1,5 +1,5 @@
-# Android device tree for alps mgvi_64_armv82 (mgvi_64_armv82)
-
+# Android device tree for Xiaomi Beryl.
+# Yare Yare 😎 
 ```
 #
 # Copyright (C) 2026 The Android Open Source Project
