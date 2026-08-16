@@ -1,0 +1,2 @@
+/metadata/vold(/.*)?       u:object_r:vold_metadata_file:s0
+/system/bin/mtk_plpath_utils    u:object_r:mtk_plpath_utils_exec:s0
