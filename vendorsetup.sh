@@ -33,7 +33,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
     export LC_ALL="C"
     export ALLOW_MISSING_DEPENDENCIES=true
-    export BUILD_USERNAME=Khargosxh18
+    export BUILD_USERNAME=🔥IQ_HARRY_07🔥
     export BUILD_HOSTNAME=github
 
     export FOX_VENDOR_BOOT_RECOVERY=1
