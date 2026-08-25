@@ -20,8 +20,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 # Configure generic_ramdidk.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
-# Hidl Service
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
+# Hidl Service - temp remove - debugging vintf 9.0 issue. 
+# PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
