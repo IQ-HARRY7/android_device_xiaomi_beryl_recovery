@@ -160,3 +160,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/init.recovery.mt6855.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/init.recovery.mt6855.rc \
     $(LOCAL_PATH)/recovery/root/tee-supplicant.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/tee-supplicant.rc \
     $(LOCAL_PATH)/recovery/root/miteelog.rc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/miteelog.rc
+# trying to get rid of from the manifest version 9.0  issue - stop this file from being generated
+PRODUCT_REMOVE_PACKAGES += android.hardware.health-service.example
+ #
