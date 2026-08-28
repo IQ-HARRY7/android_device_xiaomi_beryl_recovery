@@ -2,6 +2,10 @@ import /tee-supplicant.rc
 import /vendor/etc/init/android.hardware.security.keymint.mitee@4.0-service.rc
 import /miteelog.rc
 
+# Set SELinux to permissive 
+on early-init
+    wait /sys/fs/selinux/enforce
+    write /sys/fs/selinux/enforce 0
 
 on init
     setprop sys.usb.configfs 1
